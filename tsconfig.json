@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    // 出力されるJavaScriptが、どのようにモジュールを読み込むか指定します。
+    // バックエンドならcommonjs、フロントエンドならes2021やesnextを指定すると良さそうです。
+    "module": "NodeNext",                                /* Specify what module code is generated. */
+    // TypeScriptのソースコードがあるディレクトリを指定する。
+    "rootDir": "./src",                                  
+    "moduleResolution": "NodeNext",
+    // trueを指定することで、JSONファイルから型の抽出や生成を行います
+    "resolveJsonModule": true,                           /* Enable importing .json files */
+    "sourceMap": true,                                /* Create source map files for emitted JavaScript files. */
+    // 出力フォルダ
+    "outDir": "./dist",                                   /* Specify an output folder for all emitted files. */
+    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
+    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
+    "strict": true,                                      /* Enable all strict type-checking options. */
+    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+  },
+  /* 除外ディレクトリ */
+  "exclude": [  
+    "node_modules"
+  ],
+  /* ビルド対象ディレクトリ */
+  "include": [  
+    "src/**/*"
+  ]
+}
