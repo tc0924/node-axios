@@ -1,12 +1,23 @@
-const axios = require('axios');
+import {Response} from "request";
 
-async function getData(){
-    const url = 'https://random-data-api.com/api/v2/users?size=2&is_xml=true';
-    try{
-        const res = await axios.get(url);
-        console.log(res);
-    }catch(error){
-        console.log(error);
+const request = require('request')
+const { JSDOM } = require('jsdom')
+
+const url = 'https://sugotoku-yurugp.secureserv.jp/character/nameList.php';
+
+request(url, (e: any, response: Response, body: any) => {
+    if (e) {
+        console.error(e)
     }
-}
-getData();
+
+    try {
+        const dom = new JSDOM(body)
+
+        const characterNameDivs = [...(dom.window.document.querySelectorAll('.name'))];
+        characterNameDivs.map((characterNameDiv:any) => {
+            console.log(characterNameDiv.textContent)
+        });
+    } catch (e) {
+        console.error(e)
+    }
+})
