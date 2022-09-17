@@ -1,5 +1,3 @@
-import * as buffer from "buffer";
-
 const {JSDOM} = require('jsdom')
 const axios = require('axios')
 const fs = require('fs')
@@ -45,7 +43,7 @@ const getCharacters = async (): Promise<Character[]> => {
   return characterList;
 }
 
-const saveImages =  (characters: Character[]) => {
+const saveImages = (characters: Character[]) => {
   // map関数の中でasync awaitを使用して非同期実行する
   characters.map(async character => {
     const res = await axios({
@@ -54,7 +52,7 @@ const saveImages =  (characters: Character[]) => {
       responseType: 'arraybuffer'
     })
     console.log(`Download ... name: ${character.name}, URL: ${character.url}, file name: ${character.fileName}`);
-    fs.writeFileSync(`./assets/${character.fileName}`,  Buffer.from(res.data) , 'binary');
+    fs.writeFileSync(`./assets/${character.fileName}`, Buffer.from(res.data), 'binary');
   });
 }
 
@@ -63,5 +61,4 @@ export const getCharacterImages = async () => {
   saveImages(characters);
 };
 
-getCharacterImages().then(() => console.log(`finished!`));
 
