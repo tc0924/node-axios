@@ -1,3 +1,9 @@
-import {getCharacterImages} from "./getCharacterImages";
+import { getCharacterImages } from "./getCharacterImages";
 
-getCharacterImages().then(() => console.log(`finished!`));
+const funcList = {
+  getCharacterImages: true
+}
+
+if (funcList['getCharacterImages']) {
+  getCharacterImages().then(() => console.log(`finished!`));
+}
